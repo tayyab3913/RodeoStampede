@@ -20,12 +20,14 @@ public class GroundGeneration : MonoBehaviour
         GenerateProceduralGround();
     }
 
+    // This method generates a piece of ground when the game starts
     void GenerateGround()
     {
         int tempIndex = Random.Range(0, groundPrefabs.Length);
         ground = Instantiate(groundPrefabs[tempIndex], spawnPoint.transform.position, groundPrefabs[tempIndex].transform.rotation);
     }
 
+    // This method generates more ground and destroys the one that is outside screen
     void GenerateProceduralGround()
     {
         if (ground.transform.position.z < leftGroundBound)

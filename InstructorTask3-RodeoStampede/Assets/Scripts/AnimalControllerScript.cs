@@ -27,6 +27,7 @@ public class AnimalControllerScript : MonoBehaviour
         }
     }
 
+    // This method checks collision and perform tasks accordingly
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("Player") && !isTaken)
@@ -35,6 +36,7 @@ public class AnimalControllerScript : MonoBehaviour
         }
     }
 
+    // This method makes the player ride an animal
     void MakeAnimalBefriended(Collision collision)
     {
         gameManagerScript.AddScore();
@@ -50,6 +52,7 @@ public class AnimalControllerScript : MonoBehaviour
         counter++;
     }
 
+    // This method helps the player leave the animal
     void LeftByPlayer()
     {
         if(Input.GetKeyDown(KeyCode.Space))
@@ -60,6 +63,7 @@ public class AnimalControllerScript : MonoBehaviour
         }
     }
 
+    // This method destroys the animal based on conditions
     public void DestroyAnimal()
     {
         if(!isTaken)
@@ -73,6 +77,7 @@ public class AnimalControllerScript : MonoBehaviour
         }
     }
 
+    // This method checks for trigger and functions accordingly
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Animal"))
@@ -82,6 +87,7 @@ public class AnimalControllerScript : MonoBehaviour
         }
     }
 
+    // This method sets the game manager script for this script
     public void SetGameManager(GameManager gameManagerScript)
     {
         this.gameManagerScript = gameManagerScript;

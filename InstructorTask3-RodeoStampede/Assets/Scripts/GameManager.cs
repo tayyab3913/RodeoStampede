@@ -43,16 +43,19 @@ public class GameManager : MonoBehaviour
         GetHighScore();
     }
 
+    // This method adds score to the total score
     public void AddScore()
     {
         score += 25;
     }
 
+    // This method displays the total score in UI
     public void DisplayScore()
     {
         scoreUI.text = "Score: " + score;
     }
 
+    // This method spawns an animal at a random location on the x-axis outside the screen
     public void SpawnAnimal()
     {
         int tempIndex = Random.Range(0, animalPrefabs.Length);
@@ -60,12 +63,14 @@ public class GameManager : MonoBehaviour
         animal.GetComponent<AnimalControllerScript>().SetGameManager(this);
     }
 
+    // This method returns a random position along the x-axis outside screen
     Vector3 GetRandomSpawnPosition()
     {
         float tempRange = Random.Range(-3f, 3f);
         return new Vector3(tempRange, 1.5f, 16);
     }
 
+    // This method spawns an obstacle
     public void SpawnObstacle()
     {
         float tempRange = Random.Range(-3f, 3f);
@@ -73,6 +78,7 @@ public class GameManager : MonoBehaviour
         obstacle.GetComponent<Obstacle>().SetGameManager(this);
     }
 
+    // This method checks to see if the game is over or not
     void GameOver()
     {
         if(gameOver)
@@ -83,16 +89,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // This method reloads the scene
     public void ReloadGame()
     {
         SceneManager.LoadScene("MainScene");
     }
 
+    // This method displays highscore from PlayerPrefs
     public void GetHighScore()
     {
         highScoreUI.text = "HighScore: " + PlayerPrefs.GetFloat("Highscore", 0f).ToString();
     }
 
+    // This method sets the high score in PlayerPrefs when a high score is achieved
     public void SetHighScore()
     {
         if(score > PlayerPrefs.GetFloat("Highscore", 0f))

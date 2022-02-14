@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
         MoveJumpPoint();
     }
 
+    // This method is called for player movement
     void PlayerMovement()
     {
         horizontalInput = Input.GetAxis("Horizontal");
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
         SmoothMovement();
     }
 
+    // This method is called for smoothing out the movement by deleting excessive forces
     void SmoothMovement()
     {
         if ((playerRb.velocity.magnitude > maximumSpeed))
@@ -55,6 +57,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // This method checks for a key press and makes the player jump
     void PlayerJump()
     {
         if(Input.GetKeyDown(KeyCode.Space) && onGround)
@@ -69,6 +72,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // This method checks if the player has landed on ground
     void CheckGround(Collision collision)
     {
         if(collision.gameObject.CompareTag("Ground"))
@@ -82,11 +86,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // This method checks for collision and performs tasks accordingly
     private void OnCollisionEnter(Collision collision)
     {
         CheckGround(collision);
     }
 
+    // This method makes the player move to the animal position
     void TakeAnimalPosition()
     {
         if(hasTakenAnimal)
@@ -95,11 +101,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // This method moves the jump point to where the player will land
     void MoveJumpPoint()
     {
         jumpPoint.transform.position = new Vector3(transform.position.x, 0, transform.position.z);
     }
 
+    // This method makes the player jump
     public void Jump()
     {
         playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -108,6 +116,7 @@ public class PlayerController : MonoBehaviour
         hasTakenAnimal = false;
     }
 
+    // This method sets the jump point for this script
     public void SetJumpPoint(GameObject jumpPoint)
     {
         this.jumpPoint = jumpPoint;

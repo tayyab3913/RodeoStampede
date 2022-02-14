@@ -5,23 +5,8 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
     private GameManager gameManager;
-  // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        
-    }
-
+    // This method checks for trigger and destorys game objects according to different logics
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Animal"))
@@ -41,6 +26,7 @@ public class Obstacle : MonoBehaviour
         }
     }
 
+    // This method sets the game manager reference to this script
     public void SetGameManager(GameManager gameManager)
     {
         this.gameManager = gameManager;
